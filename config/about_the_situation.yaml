@@ -1,0 +1,38 @@
+id: about_the_situation
+title: ABOUT THE SITUATION
+questions:
+  - type: radio
+    id: which_situation
+    text: Which situation best applies to you?
+    options:
+      - label: Domestic Violence
+        value: dv
+      - label: Sexual Assault
+        value: sa
+
+  - type: boolean
+    id: live_in_us
+    text: Do you live in the US?
+
+  - type: dropdown
+    id: state
+    text: What state do you live in?
+    preset: states
+    visibility:
+      type: and
+      conditions:
+        - type: value_check
+          question_id: live_in_us
+          value: true
+        - type: value_check
+          question_id: which_situation
+          value: dv
+
+  - type: dropdown
+    id: country
+    text: What country do you live in?
+    preset: countries
+    visibility:
+      type: value_check
+      question_id: live_in_us
+      value: false

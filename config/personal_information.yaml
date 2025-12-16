@@ -1,0 +1,31 @@
+id: personal_information
+title: Personal Information
+questions:
+  - type: text
+    id: name
+    text: What is your name?
+    min_length: 10
+    max_length: 100
+
+  - type: boolean
+    id: have_alias
+    text: Do you have an alias?
+
+  - type: text
+    id: alias_name
+    text: What is your alias?
+    max_length: 200
+    visibility:
+      type: value_check
+      question_id: have_alias
+      value: true
+
+  - type: radio
+    id: gender
+    text: What is your gender?
+    preset: genders
+
+  - type: checkbox
+    id: ethnicity
+    text: Select all that apply.
+    preset: ethnicities
