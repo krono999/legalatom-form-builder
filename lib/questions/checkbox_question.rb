@@ -1,22 +1,15 @@
-require_relative '../question'
-require_relative '../presets'
-
 class CheckboxQuestion < Question
+  attr_reader :options
+
   def initialize(id:, text:, preset: nil, visibility: nil)
     super(id: id, text: text, visibility: visibility)
-    @options = preset_options(preset)
+    @options = preset_options(preset) || []
   end
 
-  def options
-    @options
-  end
-
-  def render(_response_values = nil)
-    lines = ["#{text} (checkbox question)"]
-    options.each do |opt|
-      lines << " - [ ] #{opt[:label]} (value: '#{opt[:value]}')"
-    end
-    lines.join("\n")
+  def render(_response_value = nil)
+    options.map do |opt|
+      " - [ ] #{opt[:label]} (value: '#{opt[:value]}')"
+    end.join("\n")
   end
 
   private

@@ -1,5 +1,3 @@
-require_relative '../question'
-
 class BooleanQuestion < Question
   OPTIONS = [
     { label: "Yes", value: true },
@@ -7,11 +5,9 @@ class BooleanQuestion < Question
   ]
 
   def render(response_value = nil)
-    lines = ["#{text} (boolean question)"]
-    OPTIONS.each do |opt|
+    OPTIONS.map do |opt|
       marker = (response_value == opt[:value]) ? "(x)" : "( )"
-      lines << " - #{marker} #{opt[:label]} (value: #{opt[:value]})"
-    end
-    lines.join("\n")
+      " - #{marker} #{opt[:label]} (value: #{opt[:value]})"
+    end.join("\n")
   end
 end

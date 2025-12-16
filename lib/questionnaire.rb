@@ -65,7 +65,7 @@ class Questionnaire
       conditions = vis_data['conditions'].map { |c| build_visibility(c) }
       AndCondition.new(conditions: conditions)
     else
-      nil # Or, Not no implementados por tiempo
+      nil 
     end
   end
 

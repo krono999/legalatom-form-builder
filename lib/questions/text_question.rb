@@ -17,7 +17,6 @@ class TextQuestion < Question
   end
 
   def render(_response_value = nil)
-    desc = description
-    desc ? "#{text} (text question)\n#{desc}" : "#{text} (text question)"
+    ""
   end
 end
